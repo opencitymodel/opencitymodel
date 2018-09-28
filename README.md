@@ -14,13 +14,20 @@ The project is currently in a *beta* release.
 # FAQ
 
 ### How can I read citygml files?
-There are a lot of great options on the [citygml website](https://www.citygml.org/software/)
+There are a lot of great options on the [citygml website](https://www.citygml.org/software/).  We like to use Azul for quick viewing of files and citygml4j for programmatic uses.
 
 ### What is included in the files?
-The files currently only contain building data and focus specifically on the 3d geometry of the building.  We also include a few fun/useful attributes such as the area of the footprint, the measured height of the building, the US state & county (FIPS code).
+The files currently contain building data and focus specifically on the 3D geometry of the building.  We also include a few useful attributes such as the area of the footprint, the measured height of the building, the US state & county (FIPS code).
+
+### What units are used in the data?
+The data is written using the epsg:3857 coordinate system for geo positions and all values are in meters.
+
+### What is the level of detail (LOD) of the data?
+All of the files contain only LOD1 buildings at present.  Our first goal is to get the best possible coverage of LOD1 for all of the buildings in the USA.  Once we feel comfortable with our LOD1 coverage then we are interested in shooting for LOD2, but we consider that a ways away.
 
 ### Will you be releasing more citygml files in the future?
 Our current plans include releasing files covering all buildings in the United States.  Beyond that we don't have any plans, but we are open to talking about it.
+
 
 # License
 This data is licensed by BuildZero under the [Open Data Commons Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/)
