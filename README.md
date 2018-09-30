@@ -1,7 +1,7 @@
 # Open City Model
 Open City Model is an initiative to provide open [cityGML](https://www.citygml.org) data for all the buildings in the United States.  By using other open datasets such as [USBuildingFootprints](https://github.com/Microsoft/USBuildingFootprints) in conjunction with our own code and algorithms it is our goal to provide 3D geometries for US building inventory.
 
-The project is currently in a *beta* release.
+The project is currently in a *beta* release comprised of data for approximately 11 million buildings in the state of California.
 
 
 # The Data
@@ -30,4 +30,4 @@ Our current plans include releasing files covering all buildings in the United S
 
 
 # License
-This data is licensed by BuildZero.Org under the [Open Data Commons Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/)
+This data is licensed by [BuildZero.Org](http://www.buildzero.org) under the [Open Data Commons Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/)
