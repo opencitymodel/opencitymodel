@@ -6,6 +6,10 @@ The project is currently in a *beta* release comprised of data for approximately
 
 # The Data
 
+Each US state has its own folder with all of its citygml files.  The files for each state are futher separated by [US county](https://www.census.gov/geo/reference/codes/cou.html) and then split into files of 40k buildings to keep file sizes more manageable.  
+
+Within each folder you will find files of the format `<StateName>-<CountyCodeFIPS>-<FileNumber>.gml` so for example the file for San Francisco, Ca is California-06075-000.gml
+
 | State        | Files        | Size  |
 | ------------ |-------------:| -----:|
 | [California](http://ocm-citygml-beta.s3-website-us-east-1.amazonaws.com/California/) | 266          | 53GB |
@@ -24,6 +28,9 @@ The data is written using the epsg:3857 coordinate system for geo positions and 
 
 ### What is the level of detail (LOD) of the data?
 All of the files contain only LOD1 buildings at present.  Our first goal is to get the best possible coverage of LOD1 for all of the buildings in the USA.  Once we feel comfortable with our LOD1 coverage then we are interested in shooting for LOD2, but we consider that a ways away.
+
+### Can I access the files programmatically?
+Certainly!  All of the files are available on S3 in the bucket `ocm-citygml-beta` so you can list the contents of that bucket using any s3 client to get the files that way if you wish.
 
 ### Will you be releasing more cityGML files in the future?
 Our current plans include releasing files covering all buildings in the United States.  Beyond that we don't have any plans, but we are open to talking about it.
