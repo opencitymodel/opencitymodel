@@ -21,7 +21,7 @@ Within each folder you will find files of the format `<StateName>-<CountyCodeFIP
 There are a lot of great options on the [cityGML website](https://www.citygml.org/software/).  We like to use Azul for quick viewing of files and citygml4j for programmatic uses.
 
 ### What is included in the files?
-The files currently contain building data and focus specifically on the 3D geometry of the building.  We also include a few useful attributes such as the area of the footprint, the measured height of the building, the US state & county (FIPS code), and the [UBID](https://ubid.pnnl.gov/).
+The files currently contain building data and focus specifically on the 3D geometry of the building.  We also include a few useful attributes such as the area of the footprint, the height of the building, the US state & county (FIPS code), and the [UBID](https://ubid.pnnl.gov/) (Universal Building ID).
 
 ### What units are used in the data?
 The data is written using the epsg:3857 coordinate system for geo positions and all values are in meters.
