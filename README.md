@@ -121,4 +121,4 @@ We hope that establishing OCM as an Open Data platform using the consensus stand
 This data is licensed by [BuildZero.Org](http://www.buildzero.org) under the [Open Data Commons Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/)
 
 # Contact
-[OpenCityModel](OpenCityModel@BuildZero.Org)
+OpenCityModel@BuildZero.Org
