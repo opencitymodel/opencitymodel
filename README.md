@@ -104,7 +104,7 @@ ESRI, the leading private sector provider of GIS software solutions for governme
   * [IBPSA Project One](https://ibpsa.github.io/project1/)
 
 - Building Energy Planning, Design and Modeling
-  * BuildZero.Org: [City Energy Explorer](https://newyork.dev.buildzero.org/#), [Building Energy Designer](https://designer.dev.buildzero.org/)
+  * BuildZero.Org: [City Energy Explorer](https://ca.dev.buildzero.org/#), [Building Energy Designer](https://designer.dev.buildzero.org/)
 
 
 ### Why was the Open City Model (OCM) created?
