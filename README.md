@@ -12,7 +12,7 @@ Within each folder you will find files of the format `<StateName>-<CountyCodeFIP
 
 | State        | Files        | Size  |
 | ------------ |-------------:| -----:|
-| [California](http://ocm-citygml-beta.s3-website-us-east-1.amazonaws.com/California/) | 266          | 53GB |
+| [California](http://ocm-citygml-beta.s3-website-us-east-1.amazonaws.com/California/) | 301          | 53GB |
 
 
 # FAQ - Technical
