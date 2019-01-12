@@ -62,4 +62,21 @@ Now that we have a fully functioning 3dCityDB along with the importer/exporter l
 
 ### V. Export a 3D model and view it in Google Earth
 
-Once you have a 3dCityDB running and loaded with data there are a lot of things you can do, but lets start with something simple that lets us visualize the data we just loaded in an app that's familiar to many people, Google Earth.  
+Once you have a 3dCityDB running and loaded with data there are a lot of things you can do, but lets start with something simple that lets us visualize the data we just loaded in an app that's familiar to many people, Google Earth.
+
+1. In the importer/exporter app lets click on the `KML/COLLADA/glTF Export` tab at the top
+2. Click the `Browse` button and pick a location and file name for your exported 3d model, then click `Save`.  nothing is saved yet, this is just setting the file to export to.
+3. Inside the `Export contents` section lets set the bounding box of what we want to see in our 3D model.
+    * Click the small icon of the globe with a magnifying glass to visually pick your bounding box.
+    * In the window that opens up, use the viewer to zoom down to earth into the part of your city/town you want to 3d model.  Go for a fairly well zoomed viewer to avoid exporting too large of a 3d model, which is slower.
+    * Once you have the viewer set, right-click inside the viewer and click on `Get map bounds` from the menu.  This will capture the bounding box for the viewer and populate them in the upper left of the window.
+    * Now simply click the `Apply` button in the top right corner.  You should now have your bounding box populated.
+    * In the `Tiling` section you can leave the default setting of `No tiling`
+4. Under `Export from level of detail` section you should pick `LoD1` from the dropdown menu
+5. Within the `Display as` section you want to click the checkbox next to `Extruded` and set visible from `200` pixels
+6. Now you're ready to export your 3D model, so click the `Export` button at the bottom.
+    * Let the exporter work its magic and write out your 3D model.  Once it's done then we get to see the fruits of our labor.
+7. Open up Google Earth Pro
+8. Within Google Earth, click on `File` > `Open` from the application menu.  Navigate to the location you specified for your KML export in the previous step and choose that file.
+9. You should now be looking at a 3D model of your city!
+    * you can reduce some of the competing information coming from Google Earth by unchecking the boxes under `Layers`.  in specific I would recommend unchecking `3D Buildings` and `Terrain`
