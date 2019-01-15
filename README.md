@@ -6,15 +6,15 @@ This data contains roughly 125 million buildings.
 
 # The Data
 
-The data is provided via AWS S3 in the bucket `opencitymodel`.  We include two data formats: gml ([CityGML](https://www.citygml.org)) and json ([CityJSON](https://www.cityjson.org/)) which are identical in content and purely vary in their structure.  Within the folder for a data format each US state has its own folder with all of its files.  The files for each US state are futher separated by [US county](https://www.census.gov/geo/reference/codes/cou.html) and then partitioned into files of 40k buildings to keep file sizes more manageable.
+The data is provided via AWS S3 in the bucket `opencitymodel`.  We include two data formats: gml ([CityGML](https://www.citygml.org)) and json ([CityJSON](https://www.cityjson.org/)) which are identical in content and purely vary in their structure.  Within the folder for a data format each US state has its own folder with all of its files.  The files for each US state are futher separated by [US county](https://www.census.gov/geo/reference/codes/cou.html) and then partitioned into files of 40k buildings to keep file sizes more manageable.  Please note that the GML files are zip compressed to minimize download sizes.
 
-The full path to a single file looks like
+The full path to a single file looks like ..
 
-`https://s3.amazonaws.com/opencitymodel/<data-version>/<file-format>/<StateName>/<CountyCodeFIPS>/<StateName>-<CountyCodeFIPS>-<FileNumber>.[zip|gml]`
+`https://s3.amazonaws.com/opencitymodel/<data-version>/<file-format>/<StateName>/<CountyCodeFIPS>/<StateName>-<CountyCodeFIPS>-<FileNumber>.[zip|json]`
 
 We also provide some easier to navigate file indexes for each state.  If you are familiar with accessing AWS S3 directly then you can simply use the AWS tools to list and download files from the `opencitymodel` bucket directly.
 
-| State        | Files        | Size (GML) | Size (JSON) |
+| State        | Files        | Size (GML compressed) | Size (JSON) |
 | ------------ |-------------:| ----------:| -----------:|
 | [Alabama](http://htmlpreview.github.io/?https://github.com/opencitymodel/opencitymodel/blob/master/releases/2019-jan/Alabama.html) | 102 | 474MB | 2091MB |
 | [Alaska](http://htmlpreview.github.io/?https://github.com/opencitymodel/opencitymodel/blob/master/releases/2019-jan/Alaska.html) | 6 | 24MB | 103MB |
