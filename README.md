@@ -1,5 +1,5 @@
 # Open City Model
-Open City Model is an initiative to provide open [cityGML](https://www.citygml.org) data for all the buildings in the United States.  By using other open datasets such as [USBuildingFootprints](https://github.com/Microsoft/USBuildingFootprints) in conjunction with our own code and algorithms it is our goal to provide 3D geometries for US building inventory.
+Open City Model is an initiative to provide open [cityGML](https://www.citygml.org) data for all the buildings in the United States.  By combining other open datasets such as [USBuildingFootprints](https://github.com/Microsoft/USBuildingFootprints) together with our own code and algorithms it is our goal to provide 3D geometries for every building in the United States.
 
 This data contains roughly 125 million buildings.
 
@@ -72,7 +72,7 @@ We also provide some easier to navigate file indexes for each state.  If you are
 # FAQ - Technical
 
 ### How can I read cityGML files?
-There are a lot of great options on the [cityGML website](https://www.citygml.org/software/).  We like to use Azul for quick viewing of files and citygml4j for programmatic uses.
+There are a lot of great options on the [cityGML website](https://www.citygml.org/software/) as well as the [cityJSON website](https://www.cityjson.org/en/latest/software/).
 
 ### What is included in the files?
 The files currently contain building data and focus specifically on the 3D geometry of the building.  We also include a few useful attributes such as the area of the footprint, the height of the building, the US state & county (FIPS code), and the [UBID](https://ubid.pnnl.gov/) (Universal Building ID).
@@ -81,7 +81,7 @@ The files currently contain building data and focus specifically on the 3D geome
 The data is written using the epsg:4979 coordinate system for geo positions.  This means that all of the 2D coordinates use WGS84 lat/lon values in degrees and the 3D coordinate is in meters.
 
 ### What is the level of detail (LOD) of the data?
-All of the files contain only LOD1 buildings at present.  Our first goal is to get the best possible coverage of LOD1 for all of the buildings in the USA.  Once we feel comfortable with our LOD1 coverage then we are interested in shooting for LOD2, but we consider that a ways away.
+All of the files contain only LOD1 buildings at present.  Our first goal is to get the best possible coverage of LOD1 for all of the buildings in the USA.  Once we feel comfortable with our LOD1 coverage then we are interested in LOD2, but we consider that a ways away.
 
 ### Can I access the files programmatically?
 Certainly!  All of the files are available on S3 in the bucket `opencitymodel` so you can list the contents of that bucket using any s3 client to get the files that way if you wish.
@@ -104,7 +104,7 @@ Currently the modeled building heights were generated with a simple regression a
 The source of the building height for each footprint is attributed in the data.
 
 ### Are there plans for increasing the accuracy of building heights?
-Yes. We are working on more sophisticated training data sets and algorithms. We welcome contributions to this effort. We also plan to incorporate “actual” building heights from other data sets like OSM when possible.
+Yes. We are working on more sophisticated training data sets and algorithms. We welcome contributions to this effort. We also plan to incorporate additional measured building heights from other data sets like OSM when possible.
 
 ### What is a Universal Building ID (UBID) and why is it important?
 [UBID](https://ubid.pnnl.gov/) is an initiative by the US Department of Energy (DOE) to establish a system for generating and maintaining unique ID’s for all buildings across the planet. The UBID algorithm generates a unique ID based on the geo-spatial location and form of a building footprint. A unique building ID will provide a universal indexing mechanism for the collection, linking and aggregation of building-centric data from disparate sources.
@@ -163,11 +163,11 @@ ESRI, the leading private sector provider of GIS software solutions for governme
   * [IBPSA Project One](https://ibpsa.github.io/project1/)
 
 - Building Energy Planning, Design and Modeling
-  * BuildZero.Org: [City Energy Explorer](https://ca.dev.buildzero.org/#), [Building Energy Designer](https://designer.dev.buildzero.org/)
+  * BuildZero.Org
 
 
 ### Why was the Open City Model (OCM) created?
-Open Street Maps was the inspiration for the creation of the Open City Model. GIS data and software has evolved beyond the limits of 2D mapping applications. 3D applications including urban models for various use cases are in strong demand and evolving rapidly. OCM was created to accelerate the development and use of 3D urban models for critical applications related to climate action.
+Open Street Maps was the inspiration for the creation of the Open City Model. 3D applications including urban models for various use cases are in strong demand and evolving rapidly. OCM was created to accelerate the development and use of 3D urban models for critical applications related to climate action.
 
 ### What is the vision for evolution of the Open City Model?
 We hope that establishing OCM as an Open Data platform using the consensus standard CityGML urban data model will accelerate development, collaboration and sharing. Time is of the essence for climate action. Other urban planning domains can certainly benefit. Bring on the “Smart City”!
