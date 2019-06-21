@@ -69,6 +69,18 @@ We also provide some easier to navigate file indexes for each state.  If you are
 | [Wyoming](http://htmlpreview.github.io/?https://github.com/opencitymodel/opencitymodel/blob/master/releases/2019-jun/Wyoming.html) | 25 | 74MB | 349MB |
 
 
+# Source Datasets
+
+Open City Model is fundamentally a data pipeline.  Our goal is simply to piece together the many individual open datasets describing building geometries and produce a single unified view of that data.  As such, we are extremely grateful to the folks who are producing the data that goes into Open City Model, which is listed here.  We are always looking to add in more source data, so if you have a recommendation then post an issue and let us know!
+
+| Source        | Buildings (approx)        |
+| ------------ |-------------:|
+| [MS USBuildingFootprints](https://github.com/microsoft/USBuildingFootprints) | 125m |
+| [MS Building Footprints (2017)](https://wiki.openstreetmap.org/wiki/Microsoft_Building_Footprint_Data) | 9.8m |
+| [Open Street Map](https://www.openstreetmap.org/) | 28.9m |
+| [LA County LARIAC4 (2014)](https://egis3.lacounty.gov/dataportal/2016/11/03/countywide-building-outlines-2014-update-public-domain-release/) | 3.1m |
+
+
 # FAQ - Technical
 
 ### How can I read cityGML files?
