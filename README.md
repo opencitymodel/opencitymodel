@@ -6,7 +6,7 @@ This data contains roughly 125 million buildings.
 
 # The Data
 
-The data is provided via AWS S3 in the bucket `opencitymodel`.  We include two data formats: gml ([CityGML](https://www.citygml.org)) and json ([CityJSON](https://www.cityjson.org/)) which are identical in content and purely vary in their structure.  Within the folder for a data format each US state has its own folder with all of its files.  The files for each US state are futher separated by [US county](https://www.census.gov/geo/reference/codes/cou.html) and then partitioned into files of 40k buildings to keep file sizes more manageable.  Please note that the GML files are zip compressed to minimize download sizes.
+The data is provided via AWS S3 in the bucket `opencitymodel`.  We include three data formats: `gml` ([CityGML](https://www.citygml.org)), `json` ([CityJSON](https://www.cityjson.org/)), and `parquet` which are identical in content and purely vary in their structure.  Within the folder for a data format each US state has its own folder with all of its files.  The files for each US state are futher separated by [US county](https://www.census.gov/geo/reference/codes/cou.html) and then partitioned into files of 40k buildings to keep file sizes more manageable.  Please note that the GML files are zip compressed to minimize download sizes.
 
 The full path to a single file looks like ..
 
