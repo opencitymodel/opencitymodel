@@ -18,48 +18,50 @@ NOTE: all of these steps simply involve running the provided SQL in the Athena `
 CREATE DATABASE opencitymodel;
 ```
 
-2. Define a `table` representing the Open City Model data that we want to access
-
-In this example we will specifically target Open City Model data for the state of California.
+2. Define a `table` representing the Open City Model buildings data that we want to access
 
 ```
-CREATE EXTERNAL TABLE IF NOT EXISTS opencitymodel.california (
-  `type` string,
-  `version` string,
-  `metadata` string,
-  `cityobjects` string,
-  `vertices` string
-)
-ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe'
-WITH SERDEPROPERTIES (
-  'serialization.format' = '1'
-) LOCATION 's3://opencitymodel/2019-jan/json/California/'
-TBLPROPERTIES ('has_encrypted_data'='false');
+CREATE EXTERNAL TABLE `opencitymodel.jun2019`(
+  `hash` string,
+  `ubid` string,
+  `grid` string,
+  `lat` double,
+  `lon` double,
+  `area` double,
+  `height` double,
+  `height_source` string,
+  `height_predict` double,
+  `fp` string,
+  `fp_source` string)
+PARTITIONED BY (
+  `state` string,
+  `county` string)
+ROW FORMAT SERDE
+  'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe'
+STORED AS INPUTFORMAT
+  'org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat'
+OUTPUTFORMAT
+  'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'
+LOCATION
+  's3://opencitymodel/2019-jun/parquet/'
+TBLPROPERTIES (
+  'parquet.compress'='SNAPPY',
+  'has_encrypted_data'='false')
+
 ```
 
 ![CreateTable](https://s3.amazonaws.com/static.opencitymodel.org/Query-OpenCityModel-using-AWS-Athena/CreateTable.png)
 
-3. Define a `view` of our Open City Model data for easier querying
+3. Add our table partitions to Athena
 
-The Open City Model data we are going to query is in the CityJSON format and we want to do a very small transform on that data to make it more natural to run SQL queries against.
+Our data is partitioned by `state` and `county` to make it optimal for querying by region if you are not interested in looking at the entire USA.  This step simply informs Athena about what specific partitions exist so it can optimize data access for our queries when we run them.  You'll have to be a bit patient with this step because it can take several minutes (10m to be more precise).
 
 ```
-CREATE OR REPLACE VIEW opencitymodel.buildings AS
-SELECT
-  id,
-  CAST(json_extract(bldg, '$.attributes.latitude') AS DOUBLE) AS lat,
-  CAST(json_extract(bldg, '$.attributes.longitude') AS DOUBLE) AS lon,
-  CAST(json_extract(bldg, '$.attributes.measuredheight') AS DOUBLE) AS height,
-  CAST(json_extract(bldg, '$.attributes.area') AS DOUBLE) AS area,
-  CAST(json_extract(bldg, '$.attributes.state') AS VARCHAR) AS state,
-  CAST(json_extract(bldg, '$.attributes.county') AS VARCHAR) AS county,
-  CAST(json_extract(bldg, '$.attributes.mgrs') AS VARCHAR) AS mgrs,
-  CAST(json_extract(bldg, '$.attributes.ubid') AS VARCHAR) AS ubid,
-  CAST(json_extract(bldg, '$.attributes.height_source') AS VARCHAR) AS height_source,
-  CAST(json_extract(bldg, '$.attributes.fp_source') AS VARCHAR) AS fp_source
-FROM opencitymodel.california
-CROSS JOIN UNNEST(CAST(json_extract(cityobjects, '$') AS MAP(VARCHAR,JSON))) AS bldgs(id, bldg)
+MSCK REPAIR TABLE opencitymodel.jun2019
 ```
+
+![AddPartitions](https://s3.amazonaws.com/static.opencitymodel.org/Query-OpenCityModel-using-AWS-Athena/AddPartitions.png)
+
 
 ### II. Run queries against Open City Model
 
@@ -67,10 +69,10 @@ Now we get to the fun part.  With our schema established we can now simply run a
 
 1. Simple query to see the data
 
-This is just a simple one to get us going and validate everything is working.  We'll simply list a random 10 buildings so get get a sense for what is included in the data.
+This is just a simple one to get us going and validate everything is working.  We'll simply list a random 10 buildings to get a sense for what is included in the data.
 
 ```
-SELECT * FROM opencitymodel.buildings LIMIT 10;
+SELECT * FROM opencitymodel.jun2019 LIMIT 10;
 ```
 
 ![QuerySimple](https://s3.amazonaws.com/static.opencitymodel.org/Query-OpenCityModel-using-AWS-Athena/QuerySimple.png)
@@ -82,10 +84,12 @@ In this example we use a simple geospatial query to find the tallest buildings t
 In this example we are looking at the buildings in a small neighborhood of San Francisco, Ca.
 
 ```
-SELECT id, height, area, lat, lon
-FROM buildings
+SELECT ubid, height, area, lat, lon
+FROM opencitymodel.jun2019
 WHERE lat BETWEEN 37.800921453    AND 37.8047694146
   AND lon BETWEEN -122.4090803069 AND -122.4028448283
+  AND state = 'California'
+  AND county = '06075'
 ORDER BY height DESC;
 ```
 
@@ -97,11 +101,12 @@ We can also run some interesting aggregations based on attributes such as buildi
 
 ```
 SELECT county, round(sum(area)/10000) as area_hectares
-FROM buildings
+FROM opencitymodel.jun2019
 WHERE state = 'California'
 GROUP BY county
 ORDER BY area_hectares;
 ```
+
 ![QueryBuildingAreas](https://s3.amazonaws.com/static.opencitymodel.org/Query-OpenCityModel-using-AWS-Athena/QueryBuildingAreas.png)
 
-From the results we can see that that California has a pretty wide spectrum of land use with Los Angeles county using a massive 63.8k hectares of land for buildings while just a bit farther north Alpine county has a meager 29 hectares of land for buildings.
+From the results we can see that that California has a pretty wide spectrum of land use with Los Angeles county using a massive 69.2k hectares of land for buildings while just a bit farther north Alpine county has a meager 34 hectares of land for buildings.
