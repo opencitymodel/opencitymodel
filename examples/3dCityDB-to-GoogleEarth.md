@@ -46,7 +46,7 @@ With the importer/exporter running lets connect it to your database so that you 
 3. Then click the `Apply` button on the right to save those inputs, followed by the `Connect` button at the bottom to actually connect.
 4. With a successful connection to your 3dCityDB you should see some output on the `Console` to the right such as this ...
 
-![Database Connected Screenshot](https://s3.amazonaws.com/static.opencitymodel.org/3dCityDB-to-GoogleEarth/DatabaseConnected.png)
+![Database Connected Screenshot](https://s3.dualstack.us-east-1.amazonaws.com/static.opencitymodel.org/3dCityDB-to-GoogleEarth/DatabaseConnected.png)
 
 ### IV. Import the Open City Model data you want into 3dCityDB
 
@@ -60,7 +60,7 @@ Now that we have a fully functioning 3dCityDB along with the importer/exporter l
 4. Click the `Browse` button to locate your .gml files.  Highlight all the files you have and click `Choose`.  You should now see all of your selected files in the large text area at the top of the Import tab.
 5. You are now set to simply click the `Import` button to load the Open City Model data into your 3dCityDB
     * A progress window will show you the progress as your files are loaded into the database, just wait until it's done with all the files.
-    ![Import Progress Screenshot](https://s3.amazonaws.com/static.opencitymodel.org/3dCityDB-to-GoogleEarth/ImportProgress.png)
+    ![Import Progress Screenshot](https://s3.dualstack.us-east-1.amazonaws.com/static.opencitymodel.org/3dCityDB-to-GoogleEarth/ImportProgress.png)
 6. After the import is completed you now have a bunch of buildings in your 3dCityDB you can use for a variety of applications :smiley:
 
 ### V. Export a 3D model and view it in Google Earth
@@ -79,10 +79,10 @@ Once you have a 3dCityDB running and loaded with data there are a lot of things 
 5. Within the `Display as` section you want to click the checkbox next to `Extruded` and set visible from `200` pixels
 6. Now you're ready to export your 3D model, so click the `Export` button at the bottom.
     * Let the exporter work its magic and write out your 3D model.  Once it's done then we get to see the fruits of our labor.
-    ![Export Progress Screenshot](https://s3.amazonaws.com/static.opencitymodel.org/3dCityDB-to-GoogleEarth/ExportProgress.png)
+    ![Export Progress Screenshot](https://s3.dualstack.us-east-1.amazonaws.com/static.opencitymodel.org/3dCityDB-to-GoogleEarth/ExportProgress.png)
 7. Open up Google Earth Pro
 8. Within Google Earth, click on `File` > `Open` from the application menu.  Navigate to the location you specified for your KML export in the previous step and choose that file.
 9. You should now be looking at a 3D model of your city!
     * you can reduce some of the competing information coming from Google Earth by unchecking the boxes under `Layers`.  in specific I would recommend unchecking `3D Buildings` and `Terrain`
 
-![3d City Screenshot](https://s3.amazonaws.com/static.opencitymodel.org/3dCityDB-to-GoogleEarth/GoogleEarthSF.png)
+![3d City Screenshot](https://s3.dualstack.us-east-1.amazonaws.com/static.opencitymodel.org/3dCityDB-to-GoogleEarth/GoogleEarthSF.png)

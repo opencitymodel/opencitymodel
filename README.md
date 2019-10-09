@@ -10,7 +10,7 @@ The data is provided via AWS S3 in the bucket `opencitymodel`.  We include three
 
 The full path to a single file looks like ..
 
-`https://s3.amazonaws.com/opencitymodel/<data-version>/<file-format>/<StateName>/<CountyCodeFIPS>/<StateName>-<CountyCodeFIPS>-<FileNumber>.[zip|json]`
+`https://s3.dualstack.us-east-1.amazonaws.com/opencitymodel/<data-version>/<file-format>/<StateName>/<CountyCodeFIPS>/<StateName>-<CountyCodeFIPS>-<FileNumber>.[zip|json]`
 
 We also provide some easier to navigate file indexes for each state.  If you are familiar with accessing AWS S3 directly then you can simply use the AWS tools to list and download files from the `opencitymodel` bucket directly.
 
