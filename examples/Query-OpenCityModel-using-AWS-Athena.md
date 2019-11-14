@@ -50,7 +50,7 @@ TBLPROPERTIES (
 
 ```
 
-![CreateTable](https://s3.amazonaws.com/static.opencitymodel.org/Query-OpenCityModel-using-AWS-Athena/CreateTable.png)
+![CreateTable](https://s3.dualstack.us-east-1.amazonaws.com/static.opencitymodel.org/Query-OpenCityModel-using-AWS-Athena/CreateTable.png)
 
 3. Add our table partitions to Athena
 
@@ -60,7 +60,7 @@ Our data is partitioned by `state` and `county` to make it optimal for querying 
 MSCK REPAIR TABLE opencitymodel.jun2019
 ```
 
-![AddPartitions](https://s3.amazonaws.com/static.opencitymodel.org/Query-OpenCityModel-using-AWS-Athena/AddPartitions.png)
+![AddPartitions](https://s3.dualstack.us-east-1.amazonaws.com/static.opencitymodel.org/Query-OpenCityModel-using-AWS-Athena/AddPartitions.png)
 
 
 ### II. Run queries against Open City Model
@@ -75,7 +75,7 @@ This is just a simple one to get us going and validate everything is working.  W
 SELECT * FROM opencitymodel.jun2019 LIMIT 10;
 ```
 
-![QuerySimple](https://s3.amazonaws.com/static.opencitymodel.org/Query-OpenCityModel-using-AWS-Athena/QuerySimple.png)
+![QuerySimple](https://s3.dualstack.us-east-1.amazonaws.com/static.opencitymodel.org/Query-OpenCityModel-using-AWS-Athena/QuerySimple.png)
 
 2. Export a list all buildings in a given lat/lon bounding box
 
@@ -93,7 +93,7 @@ WHERE lat BETWEEN 37.800921453    AND 37.8047694146
 ORDER BY height DESC;
 ```
 
-![QueryBoundingBox](https://s3.amazonaws.com/static.opencitymodel.org/Query-OpenCityModel-using-AWS-Athena/QueryBoundingBox.png)
+![QueryBoundingBox](https://s3.dualstack.us-east-1.amazonaws.com/static.opencitymodel.org/Query-OpenCityModel-using-AWS-Athena/QueryBoundingBox.png)
 
 3. Calculate the total surface area (in hectares) used by buildings in each California county
 
@@ -107,6 +107,6 @@ GROUP BY county
 ORDER BY area_hectares;
 ```
 
-![QueryBuildingAreas](https://s3.amazonaws.com/static.opencitymodel.org/Query-OpenCityModel-using-AWS-Athena/QueryBuildingAreas.png)
+![QueryBuildingAreas](https://s3.dualstack.us-east-1.amazonaws.com/static.opencitymodel.org/Query-OpenCityModel-using-AWS-Athena/QueryBuildingAreas.png)
 
 From the results we can see that that California has a pretty wide spectrum of land use with Los Angeles county using a massive 69.2k hectares of land for buildings while just a bit farther north Alpine county has a meager 34 hectares of land for buildings.
